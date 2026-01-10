@@ -2,14 +2,19 @@ package io.github.MarceloJoao.arquiteturaspring.montadora.configuration;
 
 import io.github.MarceloJoao.arquiteturaspring.montadora.Motor;
 import io.github.MarceloJoao.arquiteturaspring.montadora.TipoMotor;
+import io.github.MarceloJoao.arquiteturaspring.montadora.api.Aspirado;
+import io.github.MarceloJoao.arquiteturaspring.montadora.api.Eletrico;
+import io.github.MarceloJoao.arquiteturaspring.montadora.api.Turbo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 
 @Configuration
 public class MontadoraConfiguration {
 
-    @Bean(name = "motorAspirado")
+    @Bean
+    @Aspirado
     public Motor motorAspirado(){
         var motor = new Motor();
         motor.setCavalos(120);
@@ -20,7 +25,8 @@ public class MontadoraConfiguration {
         return motor;
     }
 
-    @Bean(name = "motoreletrico")
+    @Bean
+    @Eletrico
     public Motor motoreletrico(){
         var motor = new Motor();
         motor.setCavalos(110);
@@ -31,7 +37,8 @@ public class MontadoraConfiguration {
         return motor;
     }
 
-    @Bean(name = "motorturbo")
+    @Bean
+    @Turbo
     public Motor motorturbo(){
         var motor = new Motor();
         motor.setCavalos(180);
